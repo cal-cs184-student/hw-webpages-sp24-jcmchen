@@ -26,6 +26,7 @@
 <h1 align="middle">CS 184/284A: Computer Graphics and Imaging, Spring 2024</h1>
 <h1 align="middle">Homework 1: Rasterizer</h1>
 <h2 align="middle">Jeremy Chen, Yuqin Jiao</h2>
+<h3 align="middle"><a href="https://cal-cs184-student.github.io/hw-webpages-sp24-jcmchen/hw1/index.html">webpage</a></h3>
 
 <br><br>
 
@@ -56,11 +57,11 @@
     <tr>
       <td>
         <img src="images/1-1.png" align="middle" width="400px"/>
-        <figcaption align="middle"> image in the default view</figcaption>
+        <figcaption align="middle"> <i>basic/test4.svg</i> in the default view</figcaption>
       </td>
       <td>
         <img src="images/1-2.png" align="middle" width="400px"/>
-        <figcaption align="middle"> image with the pixel inspector</figcaption>
+        <figcaption align="middle"> <i>basic/test4.svg</i> with the pixel inspector</figcaption>
       </td>
     </tr>
     <br>
@@ -70,38 +71,30 @@
 
 <h3 align="middle">Part 2: Antialiasing triangles</h3>
 
-<div align="middle">
-  <table style="width=100%">
-    <tr>
-      <td>
-        <img src="images/image1.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-      <td>
-        <img src="images/image2.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-    </tr>
-    <br>
-    <tr>
-      <td>
-        <img src="images/image3.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-      <td>
-        <img src="images/image4.png" align="middle" width="400px"/>
-        <figcaption align="middle">Caption goes here.</figcaption>
-      </td>
-    </tr>
-  </table>
-</div>
+<table style="width=100%">
+  <tr>
+    <td>
+      <img src="images/2-1-1.png" align="middle" width="300px"/>
+      <figcaption align="middle"> <i>basic/test4.svg</i> with sample rates 1 </figcaption>
+    </td>
+    <td>
+      <img src="images/2-1-4.png" align="middle" width="300px"/>
+      <figcaption align="middle"> <i>basic/test4.svg</i> with sample rates 4 </figcaption>
+    </td>
+    <td>
+      <img src="images/2-1-16.png" align="middle" width="300px"/>
+      <figcaption align="middle"> <i>basic/test4.svg</i> with sample rates 16</figcaption>
+    </td>
+  </tr>
+  <br>
+</table>
 
 <h3 align="middle">Part 3: Transforms</h3>
 <p> We tried to make the cubeman do a stretching exercise. We first rotated the torso by 60 degrees and then moved the left arm 5 pixels 
   right and 30 pixels up relative to the torso. We also changed the cubeman's customs by modifying the color from 
   #EF161F(red) to #00171F(rich black) and the pattern by changing the winding vertices of triangles.  </p>
 <div align="center">
-  <img src="images/my_robots.png" width="400px"/>
+  <img src="images/my_robots.png" width="600px"/>
 </div>
 
 
@@ -109,19 +102,147 @@
 <h2 align="middle">Section II: Sampling</h2>
 
 <h3 align="middle">Part 4: Barycentric coordinates</h3>
+<p>
+  Barycentric coordinates is a way of representing points within a triangle using weights relative to its vertices. 
+  Each vertex contributes a weight to the point's value. If all barycentric coordinates are non-negative and their sum is less than or equal to one, 
+  the point lies inside the triangle. Suppose we have a triangle with vertices labeled as A, B, and C, and our target point labeled as P, 
+  we could find P as the linear combination of A, B, and C, with the weights alpha, beta, and gamma, respectively. 
+  Images on the bottom left are slides from lecture 5 that explain the concepts mentioned above, and the image on the bottom right is 
+  our implementation png screenshot of <i><b> svg/basic/test7.svg </b></i> with default viewing parameters and sample rate one.
+</p>
+
+<table style="width=100%">
+  <tr>
+    <td>
+      <img src="images/4-1-slides.png" align="middle" width="300px"/>
+      <figcaption align="middle"> lecture 5 slide </figcaption>
+    </td>
+    <td>
+      <img src="images/4-2-slides.png" align="middle" width="300px"/>
+      <figcaption align="middle"> lecture 5 slide </figcaption>
+    </td>
+    <td>
+      <img src="images/4-3.png" align="middle" width="300px"/>
+      <figcaption align="middle">svg/basic/test7.svg</figcaption>
+    </td>
+  </tr>
+  <br>
+</table>
 
 
 <h3 align="middle">Part 5: "Pixel sampling" for texture mapping</h3>
-
+<p>
+  Pixel sampling is to determine the color of pixels on a surface.In our code, we used RasterizerImp::rasterize_textured_triangle function to
+  set a triangle, calculate the bounding box, and used Color Texture::sample function set P key for switch the pixel sampling method(sample_nearest and
+  sample_bilinear). The two pixel sampling methods, nearest and bilinear, are similar to the nearest/linear methods in classification models. The P_nearest
+  method samples the color by the cloest pixel, and the P_bilinear samples the color by the average_color_weight based on 4 pixels surrounding the target.
+  <br />
+  <br />
+  The test1.svg show a good example that bilinear sampling clearly defeats nearest sampling, especially in the 1 sample per pixel case. Here are the
+  screenshots using nearest sampling at 1 sample per pixel, nearest sampling at 16 samples per pixel, bilinear sampling at 1 sample per pixel, and
+  bilinear sampling at 16 samples per pixel. From the images, we found that the 16 samples per pixel images look better than the 1 samples per pixel
+  images, and the bilinear sampling performs generally better than the nearest sampling.
+</p>
+<div align="middle">
+  <table style="width=100%">
+      <tr>
+          <td>
+              <img src="images/nearest1.png" align="middle" width="400px" />
+              <figcaption align="middle">P_nearest 1 sample per pixel</figcaption>
+          </td>
+          <td>
+              <img src="images/bilinear1.png" align="middle" width="400px" />
+              <figcaption align="middle">P_bilinear 1 sample per pixel</figcaption>
+          </td>
+      </tr>
+      <br />
+      <tr>
+          <td>
+              <img src="images/nearest16.png" align="middle" width="400px" />
+              <figcaption align="middle">P_nearest 16 samples per pixel</figcaption>
+          </td>
+          <td>
+              <img src="images/bilinear16.png" align="middle" width="400px" />
+              <figcaption align="middle">P_bilinear 16 samples per pixel</figcaption>
+          </td>
+      </tr>
+  </table>
+</div>
+<p>
+  We found that generally the bilinear sampling performs better than the nearest sampling, however, in some colorful cases(test3 and test5),
+  the two sampling methods appear similar, and when we change sample rate from 1 to 16, the difference between these two sampling methods
+  become less pronounced.
+</p>
 
 <h3 align="middle">Part 6: "Level sampling" with mipmaps for texture mapping</h3>
-
-
+<p>
+  Level sampling is a method for mapping texture to screen space with choosing a suitable level for a texture based on (du/dx,dv/dx) and
+  (du/dy,dv/dy). For this task, we had an implementation of the Texture::sample method, where we calculated the barycentric coordinates 
+  of texture mapping (uv) for 3 points: the target pixel (x,y), and its immediate neighbors (x+1,y) and (x,y+1). These coordinates are 
+  in the SampleParams structure as sp.p_uv, sp.p_dx_uv, and sp.p_dy_uv. After that, we proceed to compute the differences between them
+  (sp.p_dx_uv - sp.p_uv and sp.p_dy_uv - sp.p_uv) in the Texture::get_level function. This step calculated how quickly the texture details
+  change as moving across the surface. We further refined this data by scaling these differential vectors in accordance with the texture's
+  full resolution, adjusting them by the texture's width and height. After doing these, we can select the best mipmap level for rendering
+  depending on the level sampling method chosen—L_NEAREST for selecting the nearest mipmap level, or L_LINEAR for a linear interpolation 
+  between adjacent mipmaps—we can achieve a balance between performance and quality.
+  <br />
+  <br />
+  For pixel sampling, P_nearest is faster and has less memory usage, but may cause the image look more pixelated. P_bilinear needs more
+  time and use more memory of computer, but has a better performance on image quality. For level sampling, L_zero is faster and has less memory
+  usage than L_nearest and L_linear, since L_nearest and L_linear store multiple mipmaps, but L_nearest and L_linear have better antialiasing
+  power to perform image clearer. For number of samples per pixel, increasing the number of samples per pixel improves output quality by averaging
+  multiple samples within each pixel, so that improve the image's smoothness. However, this increases memory usage and slow the speed.
+  <br />
+  <br />
+  We chose a picture of Lake Tahoe to compare the  four versions of the image with the combinations of L_ZERO and P_NEAREST, L_ZERO and P_LINEAR,
+  L_NEAREST and P_NEAREST, as well as L_NEAREST and P_LINEAR.
+</p>
+<div align="middle">
+  <table style="width=100%">
+      <tr>
+          <td>
+              <img src="images/L0Pnearest.png" align="middle" width="400px" />
+              <figcaption align="middle">L_ZERO and P_NEAREST</figcaption>
+          </td>
+          <td>
+              <img src="images/L0Plinear.png" align="middle" width="400px" />
+              <figcaption align="middle">L_ZERO and P_LINEAR</figcaption>
+          </td>
+      </tr>
+      <br />
+      <tr>
+          <td>
+              <img src="images/LnearestPnearest.png" align="middle" width="400px" />
+              <figcaption align="middle">L_NEAREST and P_NEAREST</figcaption>
+          </td>
+          <td>
+              <img src="images/LnearestPlinear.png" align="middle" width="400px" />
+              <figcaption align="middle">L_NEAREST and P_LINEAR</figcaption>
+          </td>
+      </tr>
+  </table>
+</div>
 
 <h2 align="middle">Section III: Art Competition</h2>
-<p>If you are not participating in the optional art competition, don't worry about this section!</p>
 
 <h3 align="middle">Part 7: Draw something interesting!</h3>
+<p align="middle"> In this part, we tried to use rectangles to make a burger ourself !<p> 
+<p align="middle">-- Sesame seeds --<p> 
+<p align="middle">-- Top bun --<p> 
+<p align="middle">-- Lettuce --<p> 
+<p align="middle"> -- Pickles --<p> 
+<p align="middle">-- Tomato --<p> 
+<p align="middle">-- Patty --<p> 
+<p align="middle">-- Tomato --<p> 
+<p align="middle">-- Cheese --<p> 
+<p align="middle">-- Lettuce --<p> 
+<p align="middle">-- Bacon --<p> 
+<p align="middle">-- Bottom bun --<p> 
+<p align="middle">-- Sesame seeds --
+</p>
+<div align="center">
+  <img src="images/burger.png" width="600px"/>
+</div>
 
 </body>
 </html>
