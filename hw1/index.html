@@ -33,9 +33,14 @@
 <div>
 
 <h2 align="middle">Overview</h2>
-<p>Give a high-level overview of what you implemented in this homework Think about what you've built as a whole. Share your thoughts on what interesting things you've learned from completing the homework.</p>
+<p>In homework 1, we implemented a rasterizer with various features including single-color triangle rasterization, antialiasing, transformations, barycentric coordinates, 
+  pixel and level sampling for texture mapping, and finally, we generated a burger picture for the art competition! 
+  We explored rasterizing triangles with specific winding orders, bounding box optimizations, and the point-in-triangle test. 
+  We also learned about the pixel sampling and level sampling, compared these different sampling methods with respect to speed, 
+  memory usage, and antialiasing power, etc. Through this project, we've deepened our understanding of rasterizer in computer graphics field.</p>
 
 <h2 align="middle">Section I: Rasterization</h2>
+
 
 <h3 align="middle">Part 1: Rasterizing single-color triangles</h3>
 
@@ -70,6 +75,23 @@
 
 
 <h3 align="middle">Part 2: Antialiasing triangles</h3>
+
+<p>The high-level description of supersampling is to do antialiasing by dividing pixels into small subpixels, storing the information in a 
+  dedicated sample buffer corresponding to the sample rate, doing the calculation, and then resolving those super samples to frame buffer. 
+  This approach requires additional memory to store information and involves resizing the memory accordingly. After adding two extra loops to 
+  consider more points within a pixel, the algorithm performs point-in-triangle tests on these points. If they are inside, color values are assigned
+   and stored in the sample_buffer. Modifications to the resolve_to_framebuffer function include a loop to find values corresponding to points inside a
+    pixel, averaging their color values, and placing the average in rgb_framebuffer_target. The rasterization pipeline was adapted to support dynamic memory 
+    allocation for the sample_buffer, and the resolve_to_framebuffer() method was introduced to transfer the averaged supersamples into the frame buffer. </p>
+<p>
+<p> The basic idea of antialiasing is to remove high frequencies that are above the Nyquist frequencies before sampling. Supersampling 
+  can be likened to convolving our image with a 2D box function, which effectively filters out high-frequency details in our rasterized scene, 
+  resulting in smoother edges and improved image quality. </p>
+<p>
+<p> The three images below are our supersampling implementations. When sample rates is one, the skinny triangle shows lots of jaggies. 
+  When the sample rates is four, the edges are less jaggy. When the sample rates is sixteen, the edges are even more smooth.  When the sample 
+  rates are higher, we considered more points inside one pixel and thus got smoother edges.</p>
+  
 
 <table style="width=100%">
   <tr>
