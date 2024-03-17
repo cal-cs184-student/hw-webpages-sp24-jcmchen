@@ -747,7 +747,7 @@ output radiance.
 
   From the resulting image, the visible difference with Russian Roulette on and off is little. However, it's more efficient in terms of times and 
   rays since some rays terminate before reaching the max_ray_depth. The difference between max_ray_depth = 3 image and max_ray_depth = 100 image 
-  does not line up with the previous step because Russian Roulette causes many rays to terminate before reaching 100 bounces. These additional 
+  does not line up with the difference between previous steps because Russian Roulette causes many rays to terminate before reaching 100 bounces. These additional 
   bounces typically wouldn't significantly add to the overall light contribution.
   
 </p>
