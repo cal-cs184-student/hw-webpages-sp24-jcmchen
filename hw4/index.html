@@ -1,7 +1,1305 @@
-<html>
-	<head>
-	</head>
-	<body>
-		Homework 4 index.html here
-	</body>
-</html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!-- saved from url=(0066)https://static.us.edusercontent.com/files/NJ3fac61dpOrcWX1B1DyZasf -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <style>
+    body {
+      background-color: #404040;
+      background-color: white;
+      padding: 100px;
+      width: 1000px;
+      margin: auto;
+      text-align: left;
+      font-weight: 300;
+      font-family: 'Open Sans', sans-serif;
+      color: #121212;
+      /* cursor: url(https://rsha256.github.io/teapot-clear32.png), default!important;
+      cursor: url(https://rsha256.github.io/teapot-clear32.png), pointer!important; */
+      cursor: url(https://rsha256.github.io/dragon-clear32.png), default!important;
+      cursor: url(https://rsha256.github.io/dragon-clear32.png), pointer!important;
+      /* cursor: url(https://rsha256.github.io/cloth-clear-32.png), default!important;
+      cursor: url(https://rsha256.github.io/cloth-clear-32.png), pointer!important; */
+    }
+    h1, h2, h3, h4 {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    kbd {
+      color: #121212;
+    }
+    blockquote {
+      color: #888;
+      border: 2px solid #333;
+      padding: 10px;
+      background-color: #ccc;
+    }
+
+    table.custom-tbl {
+      border: 1px solid;
+    }
+
+    table.custom-tbl th {
+      border: 1px solid;
+      background-color: rgb(99, 209, 209);
+    }
+
+    table.custom-tbl td {
+      border: 1px solid;
+      background-color: #f1e686a8;
+    }
+  </style>
+
+  <title>CS 184 Mesh Editor</title>
+  
+  <!-- Not using below due to lacking bold fontfaces -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro|Source+Sans+Pro:400,700" rel="stylesheet"> -->
+  <link href="./index_files/css" rel="stylesheet">
+
+  <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
+  <script id="MathJax-script" async="" src="./index_files/tex-chtml.js.download">
+  </script>  
+<style type="text/css">.CtxtMenu_InfoClose {  top:.2em; right:.2em;}
+.CtxtMenu_InfoContent {  overflow:auto; text-align:left; font-size:80%;  padding:.4em .6em; border:1px inset; margin:1em 0px;  max-height:20em; max-width:30em; background-color:#EEEEEE;  white-space:normal;}
+.CtxtMenu_Info.CtxtMenu_MousePost {outline:none;}
+.CtxtMenu_Info {  position:fixed; left:50%; width:auto; text-align:center;  border:3px outset; padding:1em 2em; background-color:#DDDDDD;  color:black;  cursor:default; font-family:message-box; font-size:120%;  font-style:normal; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 15px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius:15px;               /* Safari and Chrome */  -moz-border-radius:15px;                  /* Firefox */  -khtml-border-radius:15px;                /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */  filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color="gray", Positive="true"); /* IE */}
+</style><style type="text/css">.CtxtMenu_MenuClose {  position:absolute;  cursor:pointer;  display:inline-block;  border:2px solid #AAA;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  font-family: "Courier New", Courier;  font-size:24px;  color:#F0F0F0}
+.CtxtMenu_MenuClose span {  display:block; background-color:#AAA; border:1.5px solid;  border-radius:18px;  -webkit-border-radius: 18px;             /* Safari and Chrome */  -moz-border-radius: 18px;                /* Firefox */  -khtml-border-radius: 18px;              /* Konqueror */  line-height:0;  padding:8px 0 6px     /* may need to be browser-specific */}
+.CtxtMenu_MenuClose:hover {  color:white!important;  border:2px solid #CCC!important}
+.CtxtMenu_MenuClose:hover span {  background-color:#CCC!important}
+.CtxtMenu_MenuClose:hover:focus {  outline:none}
+</style><style type="text/css">.CtxtMenu_Menu {  position:absolute;  background-color:white;  color:black;  width:auto; padding:5px 0px;  border:1px solid #CCCCCC; margin:0; cursor:default;  font: menu; text-align:left; text-indent:0; text-transform:none;  line-height:normal; letter-spacing:normal; word-spacing:normal;  word-wrap:normal; white-space:nowrap; float:none; z-index:201;  border-radius: 5px;                     /* Opera 10.5 and IE9 */  -webkit-border-radius: 5px;             /* Safari and Chrome */  -moz-border-radius: 5px;                /* Firefox */  -khtml-border-radius: 5px;              /* Konqueror */  box-shadow:0px 10px 20px #808080;         /* Opera 10.5 and IE9 */  -webkit-box-shadow:0px 10px 20px #808080; /* Safari 3 & Chrome */  -moz-box-shadow:0px 10px 20px #808080;    /* Forefox 3.5 */  -khtml-box-shadow:0px 10px 20px #808080;  /* Konqueror */}
+.CtxtMenu_MenuItem {  padding: 1px 2em;  background:transparent;}
+.CtxtMenu_MenuArrow {  position:absolute; right:.5em; padding-top:.25em; color:#666666;  font-family: null; font-size: .75em}
+.CtxtMenu_MenuActive .CtxtMenu_MenuArrow {color:white}
+.CtxtMenu_MenuArrow.CtxtMenu_RTL {left:.5em; right:auto}
+.CtxtMenu_MenuCheck {  position:absolute; left:.7em;  font-family: null}
+.CtxtMenu_MenuCheck.CtxtMenu_RTL { right:.7em; left:auto }
+.CtxtMenu_MenuRadioCheck {  position:absolute; left: .7em;}
+.CtxtMenu_MenuRadioCheck.CtxtMenu_RTL {  right: .7em; left:auto}
+.CtxtMenu_MenuInputBox {  padding-left: 1em; right:.5em; color:#666666;  font-family: null;}
+.CtxtMenu_MenuInputBox.CtxtMenu_RTL {  left: .1em;}
+.CtxtMenu_MenuComboBox {  left:.1em; padding-bottom:.5em;}
+.CtxtMenu_MenuSlider {  left: .1em;}
+.CtxtMenu_SliderValue {  position:absolute; right:.1em; padding-top:.25em; color:#333333;  font-size: .75em}
+.CtxtMenu_SliderBar {  outline: none; background: #d3d3d3}
+.CtxtMenu_MenuLabel {  padding: 1px 2em 3px 1.33em;  font-style:italic}
+.CtxtMenu_MenuRule {  border-top: 1px solid #DDDDDD;  margin: 4px 3px;}
+.CtxtMenu_MenuDisabled {  color:GrayText}
+.CtxtMenu_MenuActive {  background-color: #606872;  color: white;}
+.CtxtMenu_MenuDisabled:focus {  background-color: #E8E8E8}
+.CtxtMenu_MenuLabel:focus {  background-color: #E8E8E8}
+.CtxtMenu_ContextMenu:focus {  outline:none}
+.CtxtMenu_ContextMenu .CtxtMenu_MenuItem:focus {  outline:none}
+.CtxtMenu_SelectionMenu {  position:relative; float:left;  border-bottom: none; -webkit-box-shadow:none; -webkit-border-radius:0px; }
+.CtxtMenu_SelectionItem {  padding-right: 1em;}
+.CtxtMenu_Selection {  right: 40%; width:50%; }
+.CtxtMenu_SelectionBox {  padding: 0em; max-height:20em; max-width: none;  background-color:#FFFFFF;}
+.CtxtMenu_SelectionDivider {  clear: both; border-top: 2px solid #000000;}
+.CtxtMenu_Menu .CtxtMenu_MenuClose {  top:-10px; left:-10px}
+</style><style id="MJX-CHTML-styles">
+mjx-container[jax="CHTML"] {
+  line-height: 0;
+}
+
+mjx-container [space="1"] {
+  margin-left: .111em;
+}
+
+mjx-container [space="2"] {
+  margin-left: .167em;
+}
+
+mjx-container [space="3"] {
+  margin-left: .222em;
+}
+
+mjx-container [space="4"] {
+  margin-left: .278em;
+}
+
+mjx-container [space="5"] {
+  margin-left: .333em;
+}
+
+mjx-container [rspace="1"] {
+  margin-right: .111em;
+}
+
+mjx-container [rspace="2"] {
+  margin-right: .167em;
+}
+
+mjx-container [rspace="3"] {
+  margin-right: .222em;
+}
+
+mjx-container [rspace="4"] {
+  margin-right: .278em;
+}
+
+mjx-container [rspace="5"] {
+  margin-right: .333em;
+}
+
+mjx-container [size="s"] {
+  font-size: 70.7%;
+}
+
+mjx-container [size="ss"] {
+  font-size: 50%;
+}
+
+mjx-container [size="Tn"] {
+  font-size: 60%;
+}
+
+mjx-container [size="sm"] {
+  font-size: 85%;
+}
+
+mjx-container [size="lg"] {
+  font-size: 120%;
+}
+
+mjx-container [size="Lg"] {
+  font-size: 144%;
+}
+
+mjx-container [size="LG"] {
+  font-size: 173%;
+}
+
+mjx-container [size="hg"] {
+  font-size: 207%;
+}
+
+mjx-container [size="HG"] {
+  font-size: 249%;
+}
+
+mjx-container [width="full"] {
+  width: 100%;
+}
+
+mjx-box {
+  display: inline-block;
+}
+
+mjx-block {
+  display: block;
+}
+
+mjx-itable {
+  display: inline-table;
+}
+
+mjx-row {
+  display: table-row;
+}
+
+mjx-row > * {
+  display: table-cell;
+}
+
+mjx-mtext {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-mstyle {
+  display: inline-block;
+}
+
+mjx-merror {
+  display: inline-block;
+  color: red;
+  background-color: yellow;
+}
+
+mjx-mphantom {
+  visibility: hidden;
+}
+
+_::-webkit-full-page-media, _:future, :root mjx-container {
+  will-change: opacity;
+}
+
+mjx-assistive-mml {
+  position: absolute !important;
+  top: 0px;
+  left: 0px;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 1px 0px 0px 0px !important;
+  border: 0px !important;
+  display: block !important;
+  width: auto !important;
+  overflow: hidden !important;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+mjx-assistive-mml[display="block"] {
+  width: 100% !important;
+}
+
+mjx-math {
+  display: inline-block;
+  text-align: left;
+  line-height: 0;
+  text-indent: 0;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 100%;
+  font-size-adjust: none;
+  letter-spacing: normal;
+  border-collapse: collapse;
+  word-wrap: normal;
+  word-spacing: normal;
+  white-space: nowrap;
+  direction: ltr;
+  padding: 1px 0;
+}
+
+mjx-container[jax="CHTML"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="CHTML"][display="true"][width="full"] {
+  display: flex;
+}
+
+mjx-container[jax="CHTML"][display="true"] mjx-math {
+  padding: 0;
+}
+
+mjx-container[jax="CHTML"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="CHTML"][justify="right"] {
+  text-align: right;
+}
+
+mjx-c {
+  display: inline-block;
+}
+
+mjx-utext {
+  display: inline-block;
+  padding: .75em 0 .2em 0;
+}
+
+mjx-mo {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-stretchy-h {
+  display: inline-table;
+  width: 100%;
+}
+
+mjx-stretchy-h > * {
+  display: table-cell;
+  width: 0;
+}
+
+mjx-stretchy-h > * > mjx-c {
+  display: inline-block;
+  transform: scalex(1.0000001);
+}
+
+mjx-stretchy-h > * > mjx-c::before {
+  display: inline-block;
+  width: initial;
+}
+
+mjx-stretchy-h > mjx-ext {
+  /* IE */ overflow: hidden;
+  /* others */ overflow: clip visible;
+  width: 100%;
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c::before {
+  transform: scalex(500);
+}
+
+mjx-stretchy-h > mjx-ext > mjx-c {
+  width: 0;
+}
+
+mjx-stretchy-h > mjx-beg > mjx-c {
+  margin-right: -.1em;
+}
+
+mjx-stretchy-h > mjx-end > mjx-c {
+  margin-left: -.1em;
+}
+
+mjx-stretchy-v {
+  display: inline-block;
+}
+
+mjx-stretchy-v > * {
+  display: block;
+}
+
+mjx-stretchy-v > mjx-beg {
+  height: 0;
+}
+
+mjx-stretchy-v > mjx-end > mjx-c {
+  display: block;
+}
+
+mjx-stretchy-v > * > mjx-c {
+  transform: scaley(1.0000001);
+  transform-origin: left center;
+  overflow: hidden;
+}
+
+mjx-stretchy-v > mjx-ext {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  border: 0px solid transparent;
+  /* IE */ overflow: hidden;
+  /* others */ overflow: visible clip;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c::before {
+  width: initial;
+  box-sizing: border-box;
+}
+
+mjx-stretchy-v > mjx-ext > mjx-c {
+  transform: scaleY(500) translateY(.075em);
+  overflow: visible;
+}
+
+mjx-mark {
+  display: inline-block;
+  height: 0px;
+}
+
+mjx-mn {
+  display: inline-block;
+  text-align: left;
+}
+
+mjx-c::before {
+  display: block;
+  width: 0;
+}
+
+.MJX-TEX {
+  font-family: MJXZERO, MJXTEX;
+}
+
+.TEX-B {
+  font-family: MJXZERO, MJXTEX-B;
+}
+
+.TEX-I {
+  font-family: MJXZERO, MJXTEX-I;
+}
+
+.TEX-MI {
+  font-family: MJXZERO, MJXTEX-MI;
+}
+
+.TEX-BI {
+  font-family: MJXZERO, MJXTEX-BI;
+}
+
+.TEX-S1 {
+  font-family: MJXZERO, MJXTEX-S1;
+}
+
+.TEX-S2 {
+  font-family: MJXZERO, MJXTEX-S2;
+}
+
+.TEX-S3 {
+  font-family: MJXZERO, MJXTEX-S3;
+}
+
+.TEX-S4 {
+  font-family: MJXZERO, MJXTEX-S4;
+}
+
+.TEX-A {
+  font-family: MJXZERO, MJXTEX-A;
+}
+
+.TEX-C {
+  font-family: MJXZERO, MJXTEX-C;
+}
+
+.TEX-CB {
+  font-family: MJXZERO, MJXTEX-CB;
+}
+
+.TEX-FR {
+  font-family: MJXZERO, MJXTEX-FR;
+}
+
+.TEX-FRB {
+  font-family: MJXZERO, MJXTEX-FRB;
+}
+
+.TEX-SS {
+  font-family: MJXZERO, MJXTEX-SS;
+}
+
+.TEX-SSB {
+  font-family: MJXZERO, MJXTEX-SSB;
+}
+
+.TEX-SSI {
+  font-family: MJXZERO, MJXTEX-SSI;
+}
+
+.TEX-SC {
+  font-family: MJXZERO, MJXTEX-SC;
+}
+
+.TEX-T {
+  font-family: MJXZERO, MJXTEX-T;
+}
+
+.TEX-V {
+  font-family: MJXZERO, MJXTEX-V;
+}
+
+.TEX-VB {
+  font-family: MJXZERO, MJXTEX-VB;
+}
+
+mjx-stretchy-v mjx-c, mjx-stretchy-h mjx-c {
+  font-family: MJXZERO, MJXTEX-S1, MJXTEX-S4, MJXTEX, MJXTEX-A ! important;
+}
+
+@font-face /* 0 */ {
+  font-family: MJXZERO;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face /* 1 */ {
+  font-family: MJXTEX;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face /* 2 */ {
+  font-family: MJXTEX-B;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face /* 3 */ {
+  font-family: MJXTEX-I;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face /* 4 */ {
+  font-family: MJXTEX-MI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face /* 5 */ {
+  font-family: MJXTEX-BI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face /* 6 */ {
+  font-family: MJXTEX-S1;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face /* 7 */ {
+  font-family: MJXTEX-S2;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face /* 8 */ {
+  font-family: MJXTEX-S3;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face /* 9 */ {
+  font-family: MJXTEX-S4;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face /* 10 */ {
+  font-family: MJXTEX-A;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face /* 11 */ {
+  font-family: MJXTEX-C;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face /* 12 */ {
+  font-family: MJXTEX-CB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face /* 13 */ {
+  font-family: MJXTEX-FR;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face /* 14 */ {
+  font-family: MJXTEX-FRB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face /* 15 */ {
+  font-family: MJXTEX-SS;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face /* 16 */ {
+  font-family: MJXTEX-SSB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face /* 17 */ {
+  font-family: MJXTEX-SSI;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face /* 18 */ {
+  font-family: MJXTEX-SC;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face /* 19 */ {
+  font-family: MJXTEX-T;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face /* 20 */ {
+  font-family: MJXTEX-V;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face /* 21 */ {
+  font-family: MJXTEX-VB;
+  src: url("https://cdn.jsdelivr.net/npm/mathjax@3/es5/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+
+mjx-c.mjx-c6B::before {
+  padding: 0.694em 0.528em 0 0;
+  content: "k";
+}
+
+mjx-c.mjx-c73::before {
+  padding: 0.448em 0.394em 0.011em 0;
+  content: "s";
+}
+
+mjx-c.mjx-c3D::before {
+  padding: 0.583em 0.778em 0.082em 0;
+  content: "=";
+}
+
+mjx-c.mjx-c35::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "5";
+}
+
+mjx-c.mjx-c2C::before {
+  padding: 0.121em 0.278em 0.194em 0;
+  content: ",";
+}
+
+mjx-c.mjx-c30::before {
+  padding: 0.666em 0.5em 0.022em 0;
+  content: "0";
+}
+
+mjx-c.mjx-c64::before {
+  padding: 0.694em 0.556em 0.011em 0;
+  content: "d";
+}
+
+mjx-c.mjx-c65::before {
+  padding: 0.448em 0.444em 0.011em 0;
+  content: "e";
+}
+
+mjx-c.mjx-c6E::before {
+  padding: 0.442em 0.556em 0 0;
+  content: "n";
+}
+
+mjx-c.mjx-c69::before {
+  padding: 0.669em 0.278em 0 0;
+  content: "i";
+}
+
+mjx-c.mjx-c74::before {
+  padding: 0.615em 0.389em 0.01em 0;
+  content: "t";
+}
+
+mjx-c.mjx-c79::before {
+  padding: 0.431em 0.528em 0.204em 0;
+  content: "y";
+}
+
+mjx-c.mjx-c31::before {
+  padding: 0.666em 0.5em 0 0;
+  content: "1";
+}
+
+mjx-c.mjx-c37::before {
+  padding: 0.676em 0.5em 0.022em 0;
+  content: "7";
+}
+</style></head>
+
+<body>
+
+  <h1 align="middle">CS 184/284A: Computer Graphics and Imaging, Spring 2024</h1>
+  <h1 align="middle">Project 4: Cloth Simulator</h1>
+  <h2 align="middle">Jeremy Chen</h2>
+  
+  <!-- Add Website URL -->
+  <!-- <h2 align="middle">Website URL: <a href="TODO">TODO</a></h2> -->
+  <h3 align="middle"><a href="https://cal-cs184-student.github.io/hw-webpages-sp24-jcmchen/hw4/index.html">Webpage URL</a></h3>
+
+  <br><br>
+
+  <div>
+    <h2 align="middle">Overview</h2>
+    <p>
+      This project delves into simulating cloth behavior through constructing its structure with masses and springs, numerically integrating the simulation while adjusting parameters like spring constant, density, and damping to observe their effects on the cloth's behavior, handling collisions with spheres and planes, addressing self-collisions within the cloth simulation using spatial hashing, and implementing shaders for rendering realistic material appearances. Through these stages, the project provides a deep exploration into the intricacies of cloth simulation, collision detection, and rendering techniques, offering insights into the complex interplay between physics simulation and visual representation in computer graphics.
+
+
+
+
+
+
+    </p>
+  </div>
+
+  
+  <br><br>
+
+  <h2 align="middle">Part 1: Masses and springs</h2>
+  </a>
+
+
+    <p>
+      At the beginning of the project, we construct a grid of point masses representing the cloth's structure by iteratively 
+      creating masses at each grid point and establishing springs between neighboring masses to simulate structural, 
+      shearing, and bending constraints. We calculate the spacing between point masses based on the cloth's dimensions and 
+      orientation, with vertical orientation introducing random offsets for variation. Pinned masses are identified and 
+      fixed in place, while springs are generated to enforce constraints between point masses, considering their relative 
+      positions in the grid. This systematic approach lays the foundation for simulating the cloth's behavior and facilitates 
+      accurate rendering in subsequent stages of the simulation.
+
+    </p>
+
+    <b>
+      Take some screenshots of <i>scene/pinned2.json</i> from a viewing angle where you can clearly see the cloth wireframe 
+      to show the structure of your point masses and springs. 
+    </b>
+
+    <br><br>
+
+    <b>
+      The wireframe (1) without any shearing constraints, 
+      (2) with only shearing constraints, and (3) with all constraints.
+    </b>
+
+    <br><br>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/1-1.png" align="middle" width="350px">
+            <figcaption>No shearing constraints</figcaption>
+          </td>
+          <td>
+            <img src="images/1-2.png" align="middle" width="350px">
+            <figcaption>Only shearing constraints</figcaption>
+          </td>
+          <td>
+            <img src="images/1-3.png" align="middle" width="350px">
+            <figcaption>All constraints</figcaption>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+
+    <br><br>
+
+
+  <h2 align="middle">Part 2: Simulation via numerical integration</h2>
+  </a>
+    <b>
+      Experiment with some the parameters in the simulation. 
+      To do so, pause the simulation at the start with <kbd>P</kbd>, modify the values of interest, and then resume by pressing <kbd>P</kbd> again. 
+      You can also restart the simulation at any time from the cloth's starting position by pressing <kbd>R</kbd>.
+      <br>
+      <br>
+
+      <small>
+      1. Describe the effects of changing the spring constant <code>ks</code>; how does the cloth behave from start to rest with a very low <code>ks</code>? 
+      A high <code>ks</code>?
+      </small>
+    </b>
+
+    <p>
+      When the spring constant (ks) is very low, the cloth exhibits a highly malleable and soft behavior. This is because the springs connecting the point masses are less stiff, allowing for more flexibility and deformation in response to external forces such as gravity. As a result, the cloth falls slowly and forms gentle. The deformations are more pronounced, and the cloth spreads out widely, with the folds appearing loose and soft. Conversely, when the spring constant is high, the cloth behaves with increased rigidity and stiffness. The springs exert stronger forces, leading to less deformation and a faster falling speed.
+    </p>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/2-k50.png" align="middle" width="350vw">
+            <figcaption>ks = 50 N/M</figcaption>
+          </td>
+          <td>
+            <img src="images/2-k5000.png" align="middle" width="350vw">
+            <figcaption>Default Parameters (ks = 5000 N/M)</figcaption>
+          </td>
+          <td>
+            <img src="images/2-k50000.png" align="middle" width="350vw">
+            <figcaption>ks = 50000 N/M</figcaption>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <br><br>
+    <b>
+      <small>
+        2. What about for <code>density</code>?
+      </small>
+    </b>
+    <p>
+      Adjusting the density parameter in the cloth simulation influences how the cloth responds to external forces, particularly gravity. Increasing the density means adding more point masses to the cloth, effectively increasing its overall mass per unit area, results in a stronger gravitational force acting on the cloth. Conversely, decreasing the density reduces the number of point masses in the cloth, resulting in lower overall mass per unit area. The deformation of the higher density cloth is larger than the deformation of the lower density cloth. Adjusting the density parameter in the cloth simulation affects the behavior of the cloth in a similar manner to decreasing the spring constant. 
+    </p>
+    
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/2-d1.png" align="middle" width="350vw">
+            <figcaption>d = 1 g/m^2</figcaption>
+          </td>
+          <td>
+            <img src="images/2-k5000.png" align="middle" width="350vw">
+            <figcaption>Default Parameters (d = 15 g/m^2)</figcaption>
+          </td>
+          <td>
+            <img src="images/2-d100.png" align="middle" width="350vw">
+            <figcaption>d = 100 g/m^2</figcaption>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+    
+    <br><br>
+    <b>
+      <small>
+        3. What about for <code>damping</code>?
+      </small>
+    </b>
+
+    <p>
+      The effect of damping to the final resting state is mostly about the time. From the images and the timing information below, we can see the cloth with lower damping rate falls faster to the final resting state.
+      Reducing the damping rate would speed up the simulation since there's less resistance to slow it down.
+
+    </p>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/2-da02_1.png" align="middle" width="350vw">
+            <figcaption>Default Parameters (damping = 0.2%) at 1s</figcaption>
+          </td>
+          <td>
+            <img src="images/2-da06_1.png" align="middle" width="350vw">
+            <figcaption>damping = 0.6% at 1s</figcaption>
+          </td>
+          <td>
+            <img src="images/2-da10_1.png" align="middle" width="350vw">
+            <figcaption>damping = 1.0% at 1s</figcaption>
+          </td>
+          <td>
+        </td></tr>
+      </tbody></table>
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/2-da02_6s.png" align="middle" width="350vw">
+            <figcaption>Default Parameters, 6s to final resting state</figcaption>
+          </td>
+          <td>
+            <img src="images/2-da06_25s.png" align="middle" width="350vw">
+            <figcaption>damping = 0.6%, 25s to final resting state</figcaption>
+          </td>
+          <td>
+            <img src="images/2-da10_55s.png" align="middle" width="350vw">
+            <figcaption>damping = 1.0%, 55s to final resting state</figcaption>
+          </td>
+          <td>
+        </td></tr>
+      </tbody></table>
+    </div>
+
+    <br>
+
+
+
+
+    <b>
+    Show us a screenshot of your shaded cloth from <i>scene/pinned4.json</i> in its final resting state! 
+    If you choose to use different parameters than the default ones, please list them.
+    </b>
+    
+    <br><br>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/2-p4-1.png" align="middle" width="400px">
+            <figcaption>shaded cloth from <code>scene/pinned4.json</code> in its final resting state <br>
+              (Normal Shading)<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="1" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ks</mtext><mo>=</mo><mn>500</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+            <img src="images/2-p4-2.png" align="middle" width="400px">
+            <figcaption>shaded cloth from <code>scene/pinned4.json</code> in its final resting state <br>
+              (Phong Shading)<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="2" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c></mjx-mn><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="2"><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ks</mtext><mo>=</mo><mn>5</mn><mo>,</mo><mn>000</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+        </td></tr>
+      </tbody></table>
+    </div>
+
+
+    <br><br>
+
+  <h2 align="middle">Part 3: Handling collisions with other objects</h2>
+  </a>
+
+    <p>
+      In handling collisions with both spheres and plans, the approach involves determining whether a point mass intersects with or is inside 
+      the respective primitive. For spheres, we check if the point mass is inside the sphere by comparing its distance to the sphere's radius, 
+      adjusting its position to the tangent point on the sphere's surface if needed. On the other hand, for planes, we compute the intersection 
+      point with the plane if the point mass crosses over it, then correct the point mass's position to remain above the plane's surface. 
+      Both collision mechanisms account for friction and ensure that the cloth interacts realistically with both spherical and plane objects.
+    </p>
+    <b>
+      Show us screenshots of your shaded cloth from <i>scene/sphere.json</i> in its final resting state 
+      on the sphere using the default <code>ks = 5000</code> as well as with <code>ks = 500</code> and <code>ks = 50000</code>. 
+    </b>
+
+    <br><br>
+    
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/3-500.png" align="middle" width="300vw">
+            <figcaption>ks = 500<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="1" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ks</mtext><mo>=</mo><mn>500</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+            <img src="images/3-5000.png" align="middle" width="300vw">
+            <figcaption>Initial configuration (ks = 5000)<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="2" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c></mjx-mn><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="2"><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ks</mtext><mo>=</mo><mn>5</mn><mo>,</mo><mn>000</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+            <img src="images/3-50000.png" align="middle" width="300vw">
+            <figcaption>ks = 50000<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="3" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="2"><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ks</mtext><mo>=</mo><mn>50</mn><mo>,</mo><mn>000</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+        </td></tr>
+      </tbody></table>
+    </div>
+
+    <br>
+
+
+    <b>
+      <small>Describe the differences in the results.</small>
+    </b>
+
+    <p>
+      When the spring constant <code>ks</code> in Hooke's law varies, it directly affects the stiffness or rigidity of the spring. When <code>ks = 50000</code>, 
+      it corresponds to a stiffer spring, meaning it requires more force to deform the spring by a certain amount. As <code>ks</code>​ increases, 
+      the spring (cloth) becomes less compliant, resisting deformation more strongly and exerting greater restorative force to return 
+      to its equilibrium position. On the other hand, <code>ks = 500</code> indicates a softer spring (cloth), which deforms more easily for a given 
+      force and exerts less restorative force.
+    </p>
+
+
+    <b>
+      Show us a screenshot of your shaded cloth lying peacefully at rest on the plane. 
+      If you haven't by now, feel free to express your colorful creativity with the cloth! 
+      (You will need to complete the shaders portion first to show custom colors.)
+    </b>
+
+    <br><br>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/3-p-ph.png" align="middle" width="400vw">
+            <figcaption>Phong Shading<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="2" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c></mjx-mn><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="2"><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ks</mtext><mo>=</mo><mn>5</mn><mo>,</mo><mn>000</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+            <img src="images/3-p-t.png" align="middle" width="400vw">
+            <figcaption>Texture Shading - Photo of Lake Tahoe Taken by Me<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="3" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c6B"></mjx-c><mjx-c class="mjx-c73"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn><mjx-mo class="mjx-n"><mjx-c class="mjx-c2C"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="2"><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>ks</mtext><mo>=</mo><mn>50</mn><mo>,</mo><mn>000</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+        </td></tr>
+      </tbody></table>
+    </div>
+
+
+    <br><br>
+
+  <h2 align="middle">Part 4: Handling self-collisions</h2>
+  </a>
+    <p>
+      In this part, we addressed self-collisions within the cloth simulation by implementing spatial hashing. To efficiently handle collisions, 
+      we divided the 3D space into a grid of discrete 3D boxes and assigned each point mass to a box based on its position. This allowed us to 
+      significantly reduce the number of pairwise collision checks by limiting them to point masses within the same box. We implemented the hash_position 
+      method to map each point mass's position to a unique float identifier representing its box, and then built a spatial map using this hash to organize
+      point masses by box. The self_collide method was introduced to compute collision corrections between a point mass and nearby candidates within 
+      the same box, aggregating correction vectors and applying them to the point mass. This process was optimized by scaling the correction vector 
+      with simulation steps and ensuring the exclusion of self-collisions. Finally, we updated our cloth simulation method to check for self-collisions. 
+      These enhancements improved the efficiency and accuracy of self-collision detection within the cloth simulation.
+
+    </p>
+
+    <b>
+      Screenshots document how the cloth falls and folds on itself, 
+      starting with an early, initial self-collision 
+      and ending with the cloth at a more restful state (even if it is still slightly bouncy on the ground).
+    </b>
+    <br><br>
+
+    <b>
+      Default <code>density = 15 g/cm^2</code>, <code>ks = 5000 N/M</code> 
+    </b>
+
+    <br><br>
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/4-1-1.png" align="middle" width="300vw">
+            <figcaption>Self collision 1</figcaption>
+          </td>
+          <td>
+            <img src="images/4-1-2.png" align="middle" width="300vw">
+            <figcaption>Self collision 2</figcaption>
+          </td>
+          <td>
+            <img src="images/4-1-3.png" align="middle" width="300vw">
+            <figcaption>Self collision 3</figcaption>
+          </td>
+          <td>
+        </td></tr>
+      </tbody></table>
+    </div>
+
+    <br><br>
+
+    <b>
+      Vary the <code>density</code> as well as <code>ks</code> 
+      
+      and describe with words and screenshots how they affect the behavior of the cloth as it falls on itself.
+    </b>
+
+    <br><br>
+
+    <b>
+      (1) Vary the <code>density (density = 1 g/cm^2 and density = 50 g/cm^2)</code> while keeping the <code>ks</code> constant
+    </b>
+    <br>
+
+    <p>
+      With lower density, the cloth is lighter and falls more slowly. It shows fewer wrinkles upon lending, forming gentle and 
+      flowing folds. The cloth spreads out relatively widely at a more restful state, with the folds appearing soft and loose. 
+      On the other hand, higher density makes the cloth heavier, resulting in faster falling speed and greater inertia. The cloth 
+      shows more wrinkles upon landing. Folds are sharper and more compact, with less spreading at a more restful state.
+    </p>
+
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+              <img src="images/4-d1-1.png" align="middle" width="300px">
+              <figcaption>density = 1<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+              
+          </td>
+          <td>
+              <img src="images/4-d1-2.png" align="middle" width="300px">
+              <figcaption>density = 1<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>50</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+            <img src="images/4-d1-3.png" align="middle" width="300px">
+            <figcaption>density = 1<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>50</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+        </td>
+        </tr>
+
+        <tbody><tr align="center">
+          <td>
+              <img src="images/4-d50-1.png" align="middle" width="300px">
+              <figcaption>density = 50<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+              
+          </td>
+          <td>
+              <img src="images/4-d50-2.png" align="middle" width="300px">
+              <figcaption>density = 50<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>50</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+            <img src="images/4-d50-3.png" align="middle" width="300px">
+            <figcaption>density = 50<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>50</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+        </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <br>
+
+    <b>
+      (2) Vary the <code>ks (ks = 500 N/M and ks = 30000 N/M)</code> while keeping the <code>density</code> constant
+    </b>
+    <br>
+
+    <p>
+      With a lower spring constant, the cloth's springs are less stiff, allowing for more flexibility and deformation upon impact. 
+      As the cloth falls, it deforms easily. When it lands on itself, the cloth overlaps more. Conversely, a higher spring constant 
+      results in stiffer springs, leading to reduced flexibility and deformation. The cloth falls with less deformation, 
+      maintaining a more rigid structure. Upon landing, the cloth retains its original square shape relatively well.
+    </p>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+              <img src="images/4-k500-1.png" align="middle" width="300px">
+              <figcaption>ks = 500<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+              
+          </td>
+          <td>
+              <img src="images/4-k500-2.png" align="middle" width="300px">
+              <figcaption>ks = 500<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>50</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+            <img src="images/4-k500-3.png" align="middle" width="300px">
+            <figcaption>ks = 500<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>50</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+        </td>
+        </tr>
+    
+        <tbody><tr align="center">
+          <td>
+              <img src="images/4-k30000-1.png" align="middle" width="300px">
+              <figcaption>ks = 30000<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="4" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c31"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>1</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+              
+          </td>
+          <td>
+              <img src="images/4-k30000-2.png" align="middle" width="300px">
+              <figcaption>ks = 30000<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>50</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+          </td>
+          <td>
+            <img src="images/4-k30000-3.png" align="middle" width="300px">
+            <figcaption>ks = 30000<mjx-container class="MathJax CtxtMenu_Attached_0" jax="CHTML" tabindex="0" ctxtmenu_counter="5" style="font-size: 117.4%; position: relative;"><mjx-math class="MJX-TEX" aria-hidden="true"><mjx-mtext class="mjx-n"><mjx-c class="mjx-c64"></mjx-c><mjx-c class="mjx-c65"></mjx-c><mjx-c class="mjx-c6E"></mjx-c><mjx-c class="mjx-c73"></mjx-c><mjx-c class="mjx-c69"></mjx-c><mjx-c class="mjx-c74"></mjx-c><mjx-c class="mjx-c79"></mjx-c></mjx-mtext><mjx-mo class="mjx-n" space="4"><mjx-c class="mjx-c3D"></mjx-c></mjx-mo><mjx-mn class="mjx-n" space="4"><mjx-c class="mjx-c35"></mjx-c><mjx-c class="mjx-c30"></mjx-c></mjx-mn></mjx-math><mjx-assistive-mml unselectable="on" display="inline"><math xmlns="http://www.w3.org/1998/Math/MathML"><mtext>density</mtext><mo>=</mo><mn>50</mn></math></mjx-assistive-mml></mjx-container></figcaption>
+        </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <br><br>
+
+
+  <h2 align="middle">Part 5: Cloth Sim</h2>
+  </a>
+
+    <b>
+    Explain in your own words what is a shader program and how vertex and fragment shaders work together to create lighting and material effects.
+    </b>
+
+    <p>
+      A shader program is a set of isolated programs that run in parallel on the GPU, handling specific tasks within the graphics pipeline to render 
+      realistic material appearances efficiently. There are two main types: vertex shaders and fragment shaders. The vertex shader takes in vertices 
+      of 3D objects and manipulates their geometric properties, such as position and normal vectors, to transform the scene into normalized device 
+      coordinates. It then outputs varying data, including transformed positions, normals, and UV coordinates, to be used by the fragment shader. 
+      The fragment shader, on the other hand, takes in geometric attributes of individual fragments (or pixels) and computes the final color for each 
+      pixel. It interpolates values based on the varying data received from the vertex shader to fill in the remaining pixels between vertices, 
+      producing different material effects. Together, the vertex and fragment shaders work seamlessly to handle different aspects of lighting and 
+      material rendering, ultimately creating visually compelling graphics.
+    </p>
+
+
+    <b>
+    Explain the Blinn-Phong shading model in your own words. 
+    Show a screenshot of your Blinn-Phong shader outputting only the ambient component, a screen shot only outputting the diffuse component, a screen shot only outputting the specular component, and one using the entire Blinn-Phong model.
+    </b>
+
+    <p>
+      The Blinn-Phong shading model is a technique used to approximate lighting in computer graphics. It considers three main types of light contributions: 
+      ambient, diffuse, and specular reflections. Ambient light represents the uniform background illumination present in a scene. Diffuse lighting accounts 
+      for how the surface of an object interacts with light, with surface normals pointing towards the light source appearing brighter. Specular reflection, 
+      on the other hand, produces highlights or glare on glossy materials, depending on the position of the light source, surface normal, and viewer. By 
+      combining these three types of lighting contributions using weighted sums, the Blinn-Phong model can simulate the appearance of various materials 
+      with reflective properties.
+    </p>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+              <img src="images/5-2-1.png" align="middle" width="400px">
+              <figcaption>Ambient component only</figcaption>
+              
+          </td>
+          <td>
+              <img src="images/5-2-2.png" align="middle" width="400px">
+              <figcaption>Diffuse component only</figcaption>
+          </td>
+        </tr>
+        <tr align="center">
+          <td>
+              <img src="images/5-2-3.png" align="middle" width="400px">
+              <figcaption>Specular component only</figcaption>
+          </td>
+          <td>
+              <img src="images/5-2-4.png" align="middle" width="400px">
+              <figcaption>Complete Blinn-Phong model</figcaption>
+          </td>
+        </tr>
+      </tbody></table>
+    </div>
+
+    <br><br> 
+    <b>
+    Showing a screenshot of the texture mapping shader using my own custom texture by modifying the textures in <code>/textures/</code>.
+    </b><br><br>
+
+    <div align="middle">
+      <img src="images/5-3-1.png" align="middle" width="600px">
+    </div>
+
+    <br><br>
+
+    <b>
+    Show a screenshot of bump mapping on the cloth and on the sphere. 
+    Show a screenshot of displacement mapping on the sphere. 
+    Use the same texture for both renders. 
+    You can either provide your own texture or use one of the ones in the textures directory, 
+    BUT choose one that's not the default <code>texture_2.png</code>. 
+    Compare the two approaches and resulting renders in your own words. 
+    Compare how the two shaders react to the sphere by changing the sphere mesh's coarseness by using <code>-o 16 -a 16</code> and then <code>-o 128 -a 128</code>.
+    </b>
+
+    <br><br>
+
+    <p>
+      Bump mapping perturbs normals while displacement mapping perturbs positions. The comparison between bump mapping and displacement mapping on a 
+      sphere's texture reveals significant differences in their performance based on sampling rates. At a lower sampling rate, such as 16x16, bump 
+      mapping appears to yield better results. This is because displacement mapping, with its sparse sampling, leads to blockiness in the texture due 
+      to the interpolation of physical height perturbations across the surface. The texture's high-frequency content cannot be faithfully reproduced 
+      by the limited surface displacements. Conversely, at a higher sampling rate like 128x128, displacement mapping excels in accurately depicting 
+      both the texture's shading nuances and the physical deformations on the sphere, showcasing a more refined and detailed appearance.
+    </p>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/5-4-1_c_16.png" align="middle" width="400vw">
+            <figcaption>Bump Mapping on the Cloth</figcaption>
+          </td>
+          <td>
+            <img src="images/5-4-1_s_16.png" align="middle" width="400vw">
+            <figcaption>Bump Mapping on the Sphere</figcaption>
+          </td>
+          <td>
+        </td></tr>
+      </tbody></table>
+    </div>
+      
+    <br><br>
+    
+    <div align="middle">
+    <table style="width:100%">
+      <tbody><tr align="center">
+        <tr align="center">
+          <td>
+            <img src="images/5-4-1_s_16.png" align="middle" width="400vw">
+            <figcaption>Bump Mapping on the Sphere (resolution 16x16)</figcaption>
+          </td>
+          <td>
+            <img src="images/5-4-1_s_128.png" align="middle" width="400vw">
+            <figcaption>Bump Mapping on the Sphere (resolution 128x128)</figcaption>
+          </td>
+          <td>
+        </td></tr>
+        <tr align="center">
+          <td>
+            <img src="images/5-4-2_s_16.png" align="middle" width="400vw">
+            <figcaption>Displacement Mapping on the Sphere (resolution 16x16)</figcaption>
+          </td>
+          <td>
+            <img src="images/5-4-2_s_128.png" align="middle" width="400vw">
+            <figcaption>Displacement Mapping on the Sphere (resolution 128x128)</figcaption>
+          </td>
+          <td>
+        </td></tr>
+      </tbody></table>
+    </div>
+
+    <br><br>
+
+
+    <b>
+    A screenshot of my mirror shader on the cloth and on the sphere.
+    </b>
+    <br><br>
+
+    <div align="middle">
+      <table style="width:100%">
+        <tbody><tr align="center">
+          <td>
+            <img src="images/5-5-1.png" align="middle" width="400vw">
+            <figcaption>Mirror Shader on the Cloth</figcaption>
+          </td>
+          <td>
+            <img src="images/5-5-2.png" align="middle" width="400vw">
+            <figcaption>Mirror Shader on the Sphere</figcaption>
+          </td>
+          <td>
+        </td></tr>
+      </tbody></table>
+    </div>
+
+
+
+
+</body></html>
